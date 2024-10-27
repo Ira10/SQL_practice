@@ -1,0 +1,15 @@
+https://docs.google.com/spreadsheets/d/1_Y46EL4nvmdzsGFqQLecMkhBNPWKt2rL-Neto4NU6Ek/edit?gid=2100988376#gid=2100988376
+
+
+				
+SELECT coalesce(s.id,t.id) as id, --*,				
+	CASE			
+WHEN t.name IS NULL THEN 'new_in_source'				
+WHEN s.name IS NULL THEN 'new_in_target'				
+WHEN t.name <> s.name THEN 'mismatch'				
+END AS comment				
+FROM source s				
+FULL OUTER JOIN target t				
+ON s.id = t.id				
+				
+WHERE s.name != t.name or s.name is null or t.name is null;				
