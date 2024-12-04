@@ -1,1 +1,18 @@
 https://docs.google.com/spreadsheets/d/1_Y46EL4nvmdzsGFqQLecMkhBNPWKt2rL-Neto4NU6Ek/edit?gid=596344767#gid=596344767
+
+
+
+WITH base AS (
+select *,
+LAG(status) OVER(partition by emp_id ORDER BY timestamp_) AS last_status,
+
+from attendance
+order by emp_id, timestamp_
+)
+
+SELECT *
+
+FROM base
+
+WHERE (status = 'check-in' AND next_status = 'check-out')
+OR (status = 'check-out' AND last_status = 'check-in')
