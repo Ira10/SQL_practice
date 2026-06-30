@@ -1,0 +1,12 @@
+30 - June - 2026
+
+
+https://docs.google.com/spreadsheets/d/1_Y46EL4nvmdzsGFqQLecMkhBNPWKt2rL-Neto4NU6Ek/edit?gid=0#gid=0
+
+
+Find the ids of products that are both low fat and recyclable.		
+		
+		
+Select product_id from products		
+where low_fats = 'Y' and recyclable = 'Y';		
+		
